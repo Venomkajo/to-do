@@ -1,9 +1,12 @@
 body
 {
+    height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
+    background-color: #818cf8;
+    color: white;
 }
 
 .header
@@ -17,9 +20,113 @@ body
     align-items: center;
 }
 
-.header p
+.header p, .notes-header p
 {
     margin-left: 50px;
     font-size: 36px;
-    color: white;
+}
+
+.main-body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.notes-header
+{
+    background-color: #4f46e5;
+    height: min-content;
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.notes-main
+{
+    background-color: white;
+    width: 100%;
+    display: flex;
+}
+
+.notes-pages
+{
+    background-color: yellowgreen;
+    width: 15%;
+    min-height: 100%;
+}
+
+.notes-page
+{
+    background-color: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notes-content
+{
+    background-color: #818cf8;
+    width: 85%;
+    height: fit-content;
+    min-height: 200px;
+    outline: black solid 3px;
+}
+
+.notes-note
+{
+    background-color: #2e1065;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    gap: 20%;
+    height: max-content;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.notes-title, .notes-description, .notes-date
+{
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.notes-title
+{
+    width: 80%;
+    margin-left: 25px;
+}
+
+.notes-description
+{
+    width: 100%;
+}
+
+.notes-date
+{
+    width: 20%;
+}
+
+.footer
+{
+    background-color: #4f46e5;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer p
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: min-content;
 }
