@@ -18,9 +18,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html', // Path to your HTML template
-      filename: 'index.html' // Output HTML filename
+      template: './src/index.html',
+      filename: 'index.html'
     }),
-    new FaviconsWebpackPlugin('./src/favi.png') // Path to your favicon
+    new FaviconsWebpackPlugin({
+      logo: './src/favi.png'
+    })
   ]
 };
