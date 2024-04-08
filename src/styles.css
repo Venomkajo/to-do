@@ -102,7 +102,7 @@ body
 
 .notes-title
 {
-    width: 80%;
+    width: 70%;
     margin-left: 25px;
 }
 
@@ -114,6 +114,12 @@ body
 .notes-date
 {
     width: 20%;
+}
+
+.notes-priority
+{
+    width: 10%;
+    margin-right: 10px;
 }
 
 .notes-form
@@ -147,6 +153,7 @@ body
 {
     width: 30%;
     height: 50px;
+    resize: none;
 }
 
 #notesForm button

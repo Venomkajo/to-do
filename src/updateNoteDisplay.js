@@ -35,5 +35,14 @@ export function updateNoteDisplay(pages, currentPage){
         notesDueDateDiv.classList.add('notes-date');
         notesDueDateDiv.innerText = page.notes[i].dueDate;
         notesNoteDiv.appendChild(notesDueDateDiv);
+
+        let notesPriorityDiv = document.createElement('div');
+        notesPriorityDiv.classList.add('notes-priority');
+        notesPriorityDiv.innerText = page.notes[i].priority;
+        notesNoteDiv.appendChild(notesPriorityDiv);
+
+        notesNoteDiv.addEventListener('click', function(){
+            alert(page.notes[i].description);
+        })
     }
 }

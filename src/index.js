@@ -7,7 +7,7 @@ var pages = [];
 var currentPage = 0;
 
 if (!localStorage.getItem('notes')){
-    let note = createNote('Happy', 'I am very happy', '03.03.2045', 'high');
+    let note = createNote('Click me!', 'Good job!', '09.04.2024', 'LOW');
     let page = createPage('Page 1', note);
 
     pages.push(page);
