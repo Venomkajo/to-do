@@ -2,6 +2,13 @@ export function updateNoteDisplay(pages, currentPage){
     let notesPages = document.getElementById('notesPages');
     let notesContent = document.getElementById('notesContent');
 
+    while (notesPages.firstChild){
+        notesPages.removeChild(notesPages.firstChild);
+    }
+    while (notesContent.firstChild){
+        notesContent.removeChild(notesContent.firstChild);
+    }
+
     for (let i = 0; i < pages.length; i++){
         let page = pages[i];
 
@@ -11,10 +18,6 @@ export function updateNoteDisplay(pages, currentPage){
 
         notesPages.appendChild(pageDiv);
     }
-    
-    console.log("currentPage:", currentPage);
-    console.log("pages[currentPage]:", pages[currentPage]);
-    console.log("pages[currentPage].notes:", pages[currentPage].notes);
 
     for (let i = 0; i < pages[currentPage].notes.length; i++){
         let page = pages[currentPage];
