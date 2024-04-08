@@ -56,15 +56,17 @@ body
 
 .notes-pages
 {
-    background-color: yellowgreen;
+    background-color: #818cf8;
     width: 15%;
     min-height: 100%;
+    outline: black solid 3px;
 }
 
 .notes-page
 {
     background-color: black;
     width: 100%;
+    min-height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
