@@ -1,3 +1,4 @@
+// take data from form and immediately create an object
 export function getNoteForm(){
 
         const title = document.getElementById('title').value;

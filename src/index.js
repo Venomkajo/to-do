@@ -6,8 +6,9 @@ import {getNoteForm} from './getNoteForm';
 var pages = [];
 var currentPage = 0;
 
+// if no data in local storage create placeholder
 if (!localStorage.getItem('notes')){
-    let note = createNote('Click me!', 'Good job!', '09.04.2024', 'LOW');
+    let note = createNote('Expand me!', 'Good job!', '2024.03.09', 'LOW');
     let page = createPage('Page 1', note);
 
     pages.push(page);
@@ -16,6 +17,7 @@ if (!localStorage.getItem('notes')){
     pages = localStorage.getItem('notes');
 }
 
+// when form is submitted
 document.getElementById('notesForm').addEventListener('submit', function(event){
     event.preventDefault();
 
