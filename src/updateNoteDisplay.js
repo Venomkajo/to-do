@@ -1,18 +1,11 @@
 import { expandDiv, removeDiv, toggleDivEdit } from "./noteButtons";
 
-export function updateNoteDisplay(pages, currentPage, updatePages){
+export function updateNoteDisplay(pages, currentPage){
     let notesPages = document.getElementById('notesPages');
-    let notesContent = document.getElementById('notesContent');
-
-    console.log(pages);
-    console.log(currentPage);
 
     // remove elements from page
     while (notesPages.firstChild){
         notesPages.removeChild(notesPages.firstChild);
-    }
-    while (notesContent.firstChild){
-        notesContent.removeChild(notesContent.firstChild);
     }
 
     // render pages
@@ -43,20 +36,34 @@ export function updateNoteDisplay(pages, currentPage, updatePages){
 
         notesPages.appendChild(pageForm);
 
+        renderNotes(pages, currentPage);
+}
+
+export function updateOnlyNoteDisplay(pages, currentPage){
+    renderNotes(pages, currentPage);
+}
+
+function renderNotes(pages, currentPage){
+    let notesContent = document.getElementById('notesContent');
+
+    while (notesContent.firstChild){
+        notesContent.removeChild(notesContent.firstChild);
+    }
+
     // render every note in current page
     for (let i = 0; i < pages[currentPage].notes.length; i++){
         let page = pages[currentPage];
-
+    
         let notesNoteDiv = document.createElement('div');
         notesNoteDiv.classList.add('notes-note');
         notesContent.appendChild(notesNoteDiv);
-
+    
         let notesTitleDiv = document.createElement('div');
         notesTitleDiv.classList.add('notes-title');
         notesTitleDiv.innerText = page.notes[i].title;
         notesTitleDiv.contentEditable = false;
         notesNoteDiv.appendChild(notesTitleDiv);
-
+    
         let dueDateInput = document.createElement('input');
         dueDateInput.type = 'date';
         dueDateInput.value = page.notes[i].dueDate;

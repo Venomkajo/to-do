@@ -1,11 +1,10 @@
 import './styles.css';
 import {createNote, createPage} from './createNote';
-import {updateNoteDisplay} from './updateNoteDisplay';
+import {updateNoteDisplay, updateOnlyNoteDisplay} from './updateNoteDisplay';
 import {getNoteForm, getPageForm} from './getNoteForm';
 
 var pages = [];
 var currentPage = 0;
-let pageListener = true;
 
 // if no data in local storage create placeholder
 if (!localStorage.getItem('notes')){
@@ -51,6 +50,7 @@ function addPageEventListener(){
         page.addEventListener('click', function(){
             
             currentPage = page.dataset.order;
+            updateOnlyNoteDisplay(pages,  currentPage);
         })
     });
 }
