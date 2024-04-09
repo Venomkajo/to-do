@@ -93,7 +93,10 @@ export function updateNoteDisplay(pages, currentPage){
             saveButton.disabled = true;
             editButton.disabled = false;
             dueDateInput.disabled = true;
-            page.notes[i].dueDate = dueDateInput.value;
+
+            page.notes[i].description = notesDescriptionDiv.innerText;
+            page.notes[i].title = notesTitleDiv.innerText;
+            page.notes[i].dueDate = dueDateInput.innerText;
         });
 
         let removeButton = document.createElement('button');
