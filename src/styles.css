@@ -107,6 +107,8 @@ body
 
 .notes-date
 {
+    background-color: white;
+    color: black;
     width: 25%;
 }
 
@@ -119,6 +121,7 @@ body
 .notes-note button
 {
     width: 5%;
+    margin-right: 25px;
 }
 
 .notes-form
@@ -144,9 +147,15 @@ body
     gap: 10px;
 }
 
+.notes-hidden button:nth-last-child(1)
+{
+    margin-right: 25px;
+}
+
 .notes-description
 {
     width: 90%;
+    margin-left: 25px;
 }
 
 #notesForm

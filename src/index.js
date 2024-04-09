@@ -8,7 +8,7 @@ var currentPage = 0;
 
 // if no data in local storage create placeholder
 if (!localStorage.getItem('notes')){
-    let note = createNote('Expand me!', 'Good job!', '2024.03.09', 'LOW');
+    let note = createNote('Expand me!', 'Good job!', '2024-03-03', 'LOW');
     let page = createPage('Page 1', note);
 
     pages.push(page);

@@ -1,4 +1,4 @@
-import { expandDiv, removeDiv } from "./noteButtons";
+import { expandDiv, removeDiv, toggleDivEdit } from "./noteButtons";
 
 export function updateNoteDisplay(pages, currentPage){
     let notesPages = document.getElementById('notesPages');
@@ -34,12 +34,15 @@ export function updateNoteDisplay(pages, currentPage){
         let notesTitleDiv = document.createElement('div');
         notesTitleDiv.classList.add('notes-title');
         notesTitleDiv.innerText = page.notes[i].title;
+        notesTitleDiv.contentEditable = false;
         notesNoteDiv.appendChild(notesTitleDiv);
 
-        let notesDueDateDiv = document.createElement('div');
-        notesDueDateDiv.classList.add('notes-date');
-        notesDueDateDiv.innerText = page.notes[i].dueDate;
-        notesNoteDiv.appendChild(notesDueDateDiv);
+        let dueDateInput = document.createElement('input');
+        dueDateInput.type = 'date';
+        dueDateInput.value = page.notes[i].dueDate;
+        dueDateInput.classList.add('notes-date');
+        dueDateInput.disabled = true;
+        notesNoteDiv.appendChild(dueDateInput);
 
         let notesPriorityDiv = document.createElement('div');
         notesPriorityDiv.classList.add('notes-priority');
@@ -62,13 +65,35 @@ export function updateNoteDisplay(pages, currentPage){
         let notesDescriptionDiv = document.createElement('div');
         notesDescriptionDiv.classList.add('notes-description');
         notesDescriptionDiv.innerText = page.notes[i].description;
+        notesDescriptionDiv.contentEditable = false;
         notesHiddenDiv.appendChild(notesDescriptionDiv);
 
+        let saveButton = document.createElement('button');
         let editButton = document.createElement('button');
         editButton.innerText = 'Edit';
         notesHiddenDiv.appendChild(editButton);
         editButton.addEventListener('click', function() {
 
+            toggleDivEdit(notesDescriptionDiv);
+            toggleDivEdit(notesTitleDiv);
+
+            saveButton.disabled = false;
+            dueDateInput.disabled = false;
+            editButton.disabled = true;
+        });
+
+        saveButton.innerText = 'Save';
+        notesHiddenDiv.appendChild(saveButton);
+        saveButton.disabled = true;
+        saveButton.addEventListener('click', function() {
+
+            toggleDivEdit(notesDescriptionDiv);
+            toggleDivEdit(notesTitleDiv);
+
+            saveButton.disabled = true;
+            editButton.disabled = false;
+            dueDateInput.disabled = true;
+            page.notes[i].dueDate = dueDateInput.value;
         });
 
         let removeButton = document.createElement('button');
