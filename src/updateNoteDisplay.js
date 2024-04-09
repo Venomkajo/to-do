@@ -96,7 +96,7 @@ export function updateNoteDisplay(pages, currentPage){
 
             page.notes[i].description = notesDescriptionDiv.innerText;
             page.notes[i].title = notesTitleDiv.innerText;
-            page.notes[i].dueDate = dueDateInput.innerText;
+            page.notes[i].dueDate = dueDateInput.value;
         });
 
         let removeButton = document.createElement('button');
