@@ -9,14 +9,15 @@ var currentPage = 0;
 // if no data in local storage create placeholder
 if (!localStorage.getItem('notes')){
     let note = createNote('Expand me!', 'Good job!', '2025-12-12', 'LOW');
-    let page = createPage('Page 1', note);
+    let page = createPage('First page!', note);
 
     pages.push(page);
     createPageForm();
     updateNoteDisplay(pages, currentPage);
     addPageEventListener();
+    localStorage.setItem('notes', JSON.stringify(pages));
 } else {
-    pages = localStorage.getItem('notes');
+    pages = JSON.parse(localStorage.getItem('notes'));
     createPageForm();
     updateNoteDisplay(pages, currentPage);
     addPageEventListener();
@@ -33,6 +34,7 @@ document.getElementById('pageForm').addEventListener('submit', function(event){
     pages.push(page);
     updateNoteDisplay(pages, currentPage);
     addPageEventListener();
+    localStorage.setItem('notes', JSON.stringify(pages));
 })
 
 // when new note is submitted
@@ -43,6 +45,7 @@ document.getElementById('notesForm').addEventListener('submit', function(event){
     pages[currentPage].notes.push(newNote);
     updateOnlyNoteDisplay(pages, currentPage);
     addPageEventListener();
+    localStorage.setItem('notes', JSON.stringify(pages));
 
 })
 
