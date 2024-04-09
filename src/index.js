@@ -8,7 +8,7 @@ var currentPage = 0;
 
 // if no data in local storage create placeholder
 if (!localStorage.getItem('notes')){
-    let note = createNote('Expand me!', 'Good job!', '2024-03-03', 'LOW');
+    let note = createNote('Expand me!', 'Good job!', '2025-12-12', 'LOW');
     let page = createPage('Page 1', note);
 
     pages.push(page);
@@ -25,7 +25,7 @@ document.getElementById('pageForm').addEventListener('submit', function(event){
     event.preventDefault();
 
     const pageName = getPageForm();
-    const note = createNote('Expand me!', 'Good job!', '2024-03-03', 'LOW');
+    const note = createNote('Expand me!', 'Good job!', '2025-12-12', 'LOW');
     const page = createPage(pageName, note);
 
     pages.push(page);
@@ -39,7 +39,7 @@ document.getElementById('notesForm').addEventListener('submit', function(event){
 
     const newNote = getNoteForm();
     pages[currentPage].notes.push(newNote);
-    updateNoteDisplay(pages, currentPage);
+    updateOnlyNoteDisplay(pages, currentPage);
     addPageEventListener();
 
 })
@@ -50,7 +50,7 @@ function addPageEventListener(){
         page.addEventListener('click', function(){
             
             currentPage = page.dataset.order;
-            updateOnlyNoteDisplay(pages,  currentPage);
+            updateOnlyNoteDisplay(pages, currentPage);
         })
     });
 }

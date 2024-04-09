@@ -1,5 +1,7 @@
 import { expandDiv, removeDiv, toggleDivEdit } from "./noteButtons";
+import { getColorByDate } from "./getColorByDate";
 
+// update both pages and notes
 export function updateNoteDisplay(pages, currentPage){
     let notesPages = document.getElementById('notesPages');
 
@@ -39,10 +41,12 @@ export function updateNoteDisplay(pages, currentPage){
         renderNotes(pages, currentPage);
 }
 
+// update only notes
 export function updateOnlyNoteDisplay(pages, currentPage){
     renderNotes(pages, currentPage);
 }
 
+// render only notes
 function renderNotes(pages, currentPage){
     let notesContent = document.getElementById('notesContent');
 
@@ -69,6 +73,9 @@ function renderNotes(pages, currentPage){
         dueDateInput.value = page.notes[i].dueDate;
         dueDateInput.classList.add('notes-date');
         dueDateInput.disabled = true;
+
+        getColorByDate(dueDateInput);
+
         notesNoteDiv.appendChild(dueDateInput);
 
         let notesPriorityDiv = document.createElement('div');
