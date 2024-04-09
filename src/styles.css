@@ -60,6 +60,18 @@ body
     width: 15%;
     min-height: 100%;
     outline: black solid 3px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#pageForm
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .notes-page

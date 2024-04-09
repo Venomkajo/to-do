@@ -17,3 +17,11 @@ export function getNoteForm(){
             return;
         }
 }
+
+// take name from form and return it
+export function getPageForm(){
+    const name = document.getElementById('pageName').value;
+    if (name){
+        return name;
+    }
+}

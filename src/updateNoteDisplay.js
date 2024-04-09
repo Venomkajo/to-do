@@ -1,8 +1,11 @@
 import { expandDiv, removeDiv, toggleDivEdit } from "./noteButtons";
 
-export function updateNoteDisplay(pages, currentPage){
+export function updateNoteDisplay(pages, currentPage, updatePages){
     let notesPages = document.getElementById('notesPages');
     let notesContent = document.getElementById('notesContent');
+
+    console.log(pages);
+    console.log(currentPage);
 
     // remove elements from page
     while (notesPages.firstChild){
@@ -18,10 +21,27 @@ export function updateNoteDisplay(pages, currentPage){
 
         let pageDiv = document.createElement('div');
         pageDiv.classList.add('notes-page')
+        pageDiv.dataset.order = i;
         pageDiv.innerText = page.name;
 
         notesPages.appendChild(pageDiv);
     }
+
+    // render add page form
+        let pageForm = document.createElement('form');
+        pageForm.id = 'pageForm';
+
+        let pageName = document.createElement('input');
+        pageName.placeholder = 'Name';
+        pageName.id = 'pageName';
+        pageName.autocomplete = 'off';
+        pageForm.appendChild(pageName);
+
+        let pageButton = document.createElement('button');
+        pageButton.innerText = 'Add page';
+        pageForm.appendChild(pageButton);
+
+        notesPages.appendChild(pageForm);
 
     // render every note in current page
     for (let i = 0; i < pages[currentPage].notes.length; i++){
