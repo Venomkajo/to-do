@@ -1,6 +1,6 @@
 import './styles.css';
 import {createNote, createPage} from './createNote';
-import {updateNoteDisplay, updateOnlyNoteDisplay} from './updateNoteDisplay';
+import {updateNoteDisplay, updateOnlyNoteDisplay, createPageForm} from './updateNoteDisplay';
 import {getNoteForm, getPageForm} from './getNoteForm';
 
 var pages = [];
@@ -12,10 +12,12 @@ if (!localStorage.getItem('notes')){
     let page = createPage('Page 1', note);
 
     pages.push(page);
+    createPageForm();
     updateNoteDisplay(pages, currentPage);
     addPageEventListener();
 } else {
     pages = localStorage.getItem('notes');
+    createPageForm();
     updateNoteDisplay(pages, currentPage);
     addPageEventListener();
 }
@@ -25,7 +27,7 @@ document.getElementById('pageForm').addEventListener('submit', function(event){
     event.preventDefault();
 
     const pageName = getPageForm();
-    const note = createNote('Expand me!', 'Good job!', '2025-12-12', 'LOW');
+    const note = createNote('New page!', 'Good job!', '2025-12-12', 'LOW');
     const page = createPage(pageName, note);
 
     pages.push(page);
