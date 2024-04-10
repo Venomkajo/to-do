@@ -3,32 +3,8 @@ import { getColorByDate } from "./getColorByDate";
 
 // update both pages and notes
 export function updateNoteDisplay(pages, currentPage){
-    let notesPages = document.getElementById('notesPages');
-
-    // remove elements from page
-    while (notesPages.firstChild){
-        notesPages.removeChild(notesPages.firstChild);
-    }
-
-    // render pages
-    for (let i = 0; i < pages.length; i++){
-        let page = pages[i];
-
-        let pageDiv = document.createElement('div');
-        pageDiv.classList.add('notes-page')
-        pageDiv.dataset.order = i;
-        pageDiv.innerText = page.name;
-
-        let pageRemoveButton = document.createElement('button');
-        pageRemoveButton.dataset.order = i;
-        pageRemoveButton.innerText = 'Remove';
-        pageRemoveButton.classList = 'page-remove';
-        pageDiv.appendChild(pageRemoveButton);
-
-        notesPages.appendChild(pageDiv);
-    }
-
-        renderNotes(pages, currentPage);
+    renderPages(pages);
+    renderNotes(pages, currentPage);
 }
 
 // update only notes
@@ -61,10 +37,39 @@ export function createPageForm(){
     formDiv.appendChild(pageForm);
 }
 
+// render only pages
+function renderPages(pages){
+    let notesPages = document.getElementById('notesPages');
+
+    // remove pages from website
+    while (notesPages.firstChild){
+        notesPages.removeChild(notesPages.firstChild);
+    }
+
+    // render pages
+    for (let i = 0; i < pages.length; i++){
+        let page = pages[i];
+
+        let pageDiv = document.createElement('div');
+        pageDiv.classList.add('notes-page')
+        pageDiv.dataset.order = i;
+        pageDiv.innerText = page.name;
+
+        let pageRemoveButton = document.createElement('button');
+        pageRemoveButton.dataset.order = i;
+        pageRemoveButton.innerText = 'Remove';
+        pageRemoveButton.classList = 'page-remove';
+        pageDiv.appendChild(pageRemoveButton);
+
+        notesPages.appendChild(pageDiv);
+    }
+}
+
 // render only notes
 function renderNotes(pages, currentPage){
     let notesContent = document.getElementById('notesContent');
 
+    // remove notes from website
     while (notesContent.firstChild){
         notesContent.removeChild(notesContent.firstChild);
     }
@@ -72,7 +77,8 @@ function renderNotes(pages, currentPage){
     // render every note in current page
     for (let i = 0; i < pages[currentPage].notes.length; i++){
         let page = pages[currentPage];
-    
+        
+        // main div
         let notesNoteDiv = document.createElement('div');
         notesNoteDiv.classList.add('notes-note');
         notesContent.appendChild(notesNoteDiv);
@@ -89,6 +95,7 @@ function renderNotes(pages, currentPage){
         dueDateInput.classList.add('notes-date');
         dueDateInput.disabled = true;
 
+        // color date input
         getColorByDate(dueDateInput);
 
         notesNoteDiv.appendChild(dueDateInput);
