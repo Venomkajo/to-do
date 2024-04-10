@@ -52,23 +52,21 @@ function renderPages(pages, currentPage){
 
         let pageDiv = document.createElement('div');
         pageDiv.classList.add('notes-page')
-        pageDiv.dataset.order = i;
         pageDiv.innerText = page.name;
 
         let pageRemoveButton = document.createElement('button');
-        pageRemoveButton.dataset.order = i;
         pageRemoveButton.innerText = 'Remove';
         pageRemoveButton.classList = 'page-remove';
         pageDiv.appendChild(pageRemoveButton);
 
         pageDiv.addEventListener('click', function(){
-            currentPage = pageDiv.dataset.order;
+            currentPage = i;
             localStorage.setItem('currentPage', JSON.stringify(currentPage));
             updateNoteDisplay(pages, currentPage);
         })
 
         pageRemoveButton.addEventListener('click', function(){
-            pages.splice(pageRemoveButton.dataset.order, 1);
+            pages.splice(i, 1);
             localStorage.setItem('notes', JSON.stringify(pages));
             updateNoteDisplay(pages, currentPage);
         })
@@ -171,7 +169,11 @@ function renderNotes(pages, currentPage){
         removeButton.innerText = 'Remove';
         notesHiddenDiv.appendChild(removeButton);
         removeButton.addEventListener('click', function() {
-            removeDiv(notesNoteDiv, notesHiddenDiv);
+            notesNoteDiv.remove();
+            notesHiddenDiv.remove();
+
+            pages[currentPage].notes.splice(i, 1);
+            localStorage.setItem('notes', JSON.stringify(pages));
         });
 
     }

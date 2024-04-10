@@ -7,12 +7,6 @@ export function expandDiv(div){
     }
 }
 
-// remove two divs at once
-export function removeDiv(div1, div2){
-    div1.remove();
-    div2.remove();
-}
-
 // make div editable or not
 export function toggleDivEdit(div){
     if (div.contentEditable === 'true'){
