@@ -14,13 +14,12 @@ if (!localStorage.getItem('notes')){
     pages.push(page);
     createPageForm();
     updateNoteDisplay(pages, currentPage);
-    addPageEventListener();
     localStorage.setItem('notes', JSON.stringify(pages));
+    localStorage.setItem('currentPage', JSON.stringify(currentPage));
 } else {
     pages = JSON.parse(localStorage.getItem('notes'));
     createPageForm();
     updateNoteDisplay(pages, currentPage);
-    addPageEventListener();
 }
 
 // when new page is submitted
@@ -31,35 +30,26 @@ document.getElementById('pageForm').addEventListener('submit', function(event){
     const note = createNote('New page!', 'Good job!', '2025-12-12', 'LOW');
     const page = createPage(pageName, note);
 
+    pages = JSON.parse(localStorage.getItem('notes'));
+    currentPage = JSON.parse(localStorage.getItem('currentPage'));
+
     pages.push(page);
-    updateNoteDisplay(pages, currentPage);
-    addPageEventListener();
     localStorage.setItem('notes', JSON.stringify(pages));
+    updateNoteDisplay(pages, currentPage);
 })
 
 // when new note is submitted
 document.getElementById('notesForm').addEventListener('submit', function(event){
     event.preventDefault();
 
+    pages = JSON.parse(localStorage.getItem('notes'));
+    currentPage = JSON.parse(localStorage.getItem('currentPage'));
+
     const newNote = getNoteForm();
     pages[currentPage].notes.push(newNote);
-    updateOnlyNoteDisplay(pages, currentPage);
-    addPageEventListener();
     localStorage.setItem('notes', JSON.stringify(pages));
+    updateNoteDisplay(pages, currentPage);
 
 })
 
-function addPageEventListener(){
-    const everyPage = document.querySelectorAll('.notes-page');
-    everyPage.forEach(page => {
-        page.addEventListener('click', function(){
-            
-            currentPage = page.dataset.order;
-            updateOnlyNoteDisplay(pages, currentPage);
-        })
-    });
-}
-
-
-
-console.log("good");
+console.log("loading successful");

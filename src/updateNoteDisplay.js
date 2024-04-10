@@ -3,7 +3,7 @@ import { getColorByDate } from "./getColorByDate";
 
 // update both pages and notes
 export function updateNoteDisplay(pages, currentPage){
-    renderPages(pages);
+    renderPages(pages, currentPage);
     renderNotes(pages, currentPage);
 }
 
@@ -38,7 +38,7 @@ export function createPageForm(){
 }
 
 // render only pages
-function renderPages(pages){
+function renderPages(pages, currentPage){
     let notesPages = document.getElementById('notesPages');
 
     // remove pages from website
@@ -60,6 +60,18 @@ function renderPages(pages){
         pageRemoveButton.innerText = 'Remove';
         pageRemoveButton.classList = 'page-remove';
         pageDiv.appendChild(pageRemoveButton);
+
+        pageDiv.addEventListener('click', function(){
+            currentPage = pageDiv.dataset.order;
+            localStorage.setItem('currentPage', JSON.stringify(currentPage));
+            updateNoteDisplay(pages, currentPage);
+        })
+
+        pageRemoveButton.addEventListener('click', function(){
+            pages.splice(pageRemoveButton.dataset.order, 1);
+            localStorage.setItem('notes', JSON.stringify(pages));
+            updateNoteDisplay(pages, currentPage);
+        })
 
         notesPages.appendChild(pageDiv);
     }
