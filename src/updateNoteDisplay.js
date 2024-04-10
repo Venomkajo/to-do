@@ -7,11 +7,6 @@ export function updateNoteDisplay(pages, currentPage){
     renderNotes(pages, currentPage);
 }
 
-// update only notes
-export function updateOnlyNoteDisplay(pages, currentPage){
-    renderNotes(pages, currentPage);
-}
-
 export function createPageForm(){
     let formDiv = document.querySelector('.notes-form');
 

@@ -7,7 +7,7 @@ export function expandDiv(div){
     }
 }
 
-// make div editable or not
+// toggle whether edit is toggleable
 export function toggleDivEdit(div){
     if (div.contentEditable === 'true'){
         div.contentEditable = 'false';

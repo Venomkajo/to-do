@@ -1,6 +1,6 @@
 import './styles.css';
 import {createNote, createPage} from './createNote';
-import {updateNoteDisplay, updateOnlyNoteDisplay, createPageForm} from './updateNoteDisplay';
+import {updateNoteDisplay, createPageForm} from './updateNoteDisplay';
 import {getNoteForm, getPageForm} from './getNoteForm';
 
 var pages = [];
@@ -30,6 +30,7 @@ document.getElementById('pageForm').addEventListener('submit', function(event){
     const note = createNote('New page!', 'Good job!', '2025-12-12', 'LOW');
     const page = createPage(pageName, note);
 
+    // get updated date from dynamic event listeners
     pages = JSON.parse(localStorage.getItem('notes'));
     currentPage = JSON.parse(localStorage.getItem('currentPage'));
 
@@ -42,6 +43,7 @@ document.getElementById('pageForm').addEventListener('submit', function(event){
 document.getElementById('notesForm').addEventListener('submit', function(event){
     event.preventDefault();
 
+    // get updated date from dynamic event listeners
     pages = JSON.parse(localStorage.getItem('notes'));
     currentPage = JSON.parse(localStorage.getItem('currentPage'));
 

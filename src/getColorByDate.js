@@ -2,6 +2,7 @@ export function getColorByDate(div){
     const currentDate = new Date();
     const inputDate = new Date(div.value);
 
+    // if the date is today mark as urgent
     if (inputDate.toDateString() === currentDate.toDateString()){
         div.style.backgroundColor = 'red';
         div.style.color = 'white';
