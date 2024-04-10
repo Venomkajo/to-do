@@ -19,6 +19,12 @@ export function updateNoteDisplay(pages, currentPage){
         pageDiv.dataset.order = i;
         pageDiv.innerText = page.name;
 
+        let pageRemoveButton = document.createElement('button');
+        pageRemoveButton.dataset.order = i;
+        pageRemoveButton.innerText = 'Remove';
+        pageRemoveButton.classList = 'page-remove';
+        pageDiv.appendChild(pageRemoveButton);
+
         notesPages.appendChild(pageDiv);
     }
 
@@ -33,7 +39,7 @@ export function updateOnlyNoteDisplay(pages, currentPage){
 export function createPageForm(){
     let formDiv = document.querySelector('.notes-form');
 
-    // render add page form
+    // add page form
     let pageForm = document.createElement('form');
     pageForm.id = 'pageForm';
 
