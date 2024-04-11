@@ -1,4 +1,4 @@
-import { expandDiv, removeDiv, toggleDivEdit } from "./noteButtons";
+import { expandDiv, toggleDivEdit } from "./noteButtons";
 import { getColorByDate } from "./getColorByDate";
 
 // update both pages and notes
@@ -159,6 +159,5 @@ function renderNotes(pages, currentPage){
             pages[currentPage].notes.splice(i, 1);
             localStorage.setItem('notes', JSON.stringify(pages));
         });
-
     }
 }

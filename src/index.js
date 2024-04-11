@@ -25,7 +25,7 @@ document.getElementById('pageForm').addEventListener('submit', function(event){
     event.preventDefault();
 
     const pageName = getPageForm();
-    const note = createNote('New page!', 'Good job!', '2025-12-12', 'LOW');
+    const note = createNote('New page!', '...', '2025-12-12', 'LOW');
     const page = createPage(pageName, note);
 
     // get updated date from dynamic event listeners
