@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   devtool: 'source-map',
   entry: './src/index.js',
   output: {
