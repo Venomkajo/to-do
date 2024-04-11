@@ -7,31 +7,6 @@ export function updateNoteDisplay(pages, currentPage){
     renderNotes(pages, currentPage);
 }
 
-// add page form
-export function createPageForm(){
-    let formDiv = document.querySelector('.notes-form');
-
-    let pageForm = document.createElement('form');
-    pageForm.id = 'pageForm';
-
-    let pageNameLabel = document.createElement('label');
-    pageNameLabel.for = 'pageName';
-    pageNameLabel.innerText = 'New page name';
-    pageForm.appendChild(pageNameLabel);
-
-    let pageName = document.createElement('input');
-    pageName.placeholder = 'Name';
-    pageName.id = 'pageName';
-    pageName.autocomplete = 'off';
-    pageForm.appendChild(pageName);
-
-    let pageButton = document.createElement('button');
-    pageButton.innerText = 'Add page';
-    pageForm.appendChild(pageButton);
-
-    formDiv.appendChild(pageForm);
-}
-
 // render only pages
 function renderPages(pages, currentPage){
     let notesPages = document.getElementById('notesPages');

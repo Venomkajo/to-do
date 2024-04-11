@@ -1,6 +1,6 @@
 import './styles.css';
 import {createNote, createPage} from './createNote';
-import {updateNoteDisplay, createPageForm} from './updateNoteDisplay';
+import {updateNoteDisplay} from './updateNoteDisplay';
 import {getNoteForm, getPageForm} from './getNoteForm';
 
 var pages = [];
@@ -12,13 +12,11 @@ if (!localStorage.getItem('notes')){
     let page = createPage('First page!', note);
 
     pages.push(page);
-    createPageForm();
     updateNoteDisplay(pages, currentPage);
     localStorage.setItem('notes', JSON.stringify(pages));
     localStorage.setItem('currentPage', JSON.stringify(currentPage));
 } else {
     pages = JSON.parse(localStorage.getItem('notes'));
-    createPageForm();
     updateNoteDisplay(pages, currentPage);
 }
 
