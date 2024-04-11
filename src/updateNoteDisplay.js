@@ -7,10 +7,10 @@ export function updateNoteDisplay(pages, currentPage){
     renderNotes(pages, currentPage);
 }
 
+// add page form
 export function createPageForm(){
     let formDiv = document.querySelector('.notes-form');
 
-    // add page form
     let pageForm = document.createElement('form');
     pageForm.id = 'pageForm';
 
@@ -54,12 +54,14 @@ function renderPages(pages, currentPage){
         pageRemoveButton.classList = 'page-remove';
         pageDiv.appendChild(pageRemoveButton);
 
+        // switch current page
         pageDiv.addEventListener('click', function(){
             currentPage = i;
             localStorage.setItem('currentPage', JSON.stringify(currentPage));
             updateNoteDisplay(pages, currentPage);
         })
 
+        // remove a page
         pageRemoveButton.addEventListener('click', function(){
             pages.splice(i, 1);
             localStorage.setItem('notes', JSON.stringify(pages));
@@ -119,6 +121,8 @@ function renderNotes(pages, currentPage){
         let expandButton = document.createElement('button');
         expandButton.innerText = 'v';
         notesNoteDiv.appendChild(expandButton);
+
+        // show hidden div
         expandButton.addEventListener('click', function() {
             expandDiv(notesHiddenDiv);
         });
@@ -133,6 +137,8 @@ function renderNotes(pages, currentPage){
         let editButton = document.createElement('button');
         editButton.innerText = 'Edit';
         notesHiddenDiv.appendChild(editButton);
+
+        // allow editing of text
         editButton.addEventListener('click', function() {
 
             toggleDivEdit(notesDescriptionDiv);
@@ -146,6 +152,8 @@ function renderNotes(pages, currentPage){
         saveButton.innerText = 'Save';
         notesHiddenDiv.appendChild(saveButton);
         saveButton.disabled = true;
+
+        // when pressed save edits
         saveButton.addEventListener('click', function() {
 
             toggleDivEdit(notesDescriptionDiv);
@@ -163,6 +171,8 @@ function renderNotes(pages, currentPage){
         let removeButton = document.createElement('button');
         removeButton.innerText = 'Remove';
         notesHiddenDiv.appendChild(removeButton);
+
+        // remove a note
         removeButton.addEventListener('click', function() {
             notesNoteDiv.remove();
             notesHiddenDiv.remove();
