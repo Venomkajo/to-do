@@ -38,9 +38,13 @@ function renderPages(pages, currentPage){
 
         // remove a page
         pageRemoveButton.addEventListener('click', function(){
-            pages.splice(i, 1);
-            localStorage.setItem('notes', JSON.stringify(pages));
-            updateNoteDisplay(pages, currentPage);
+            let confirmation = confirm('Are you sure you want to delete this page?');
+
+            if (confirmation){
+                pages.splice(i, 1);
+                localStorage.setItem('notes', JSON.stringify(pages));
+                updateNoteDisplay(pages, currentPage);
+            }
         })
 
         notesPages.appendChild(pageDiv);
