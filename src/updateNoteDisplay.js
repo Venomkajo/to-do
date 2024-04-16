@@ -3,8 +3,13 @@ import { getColorByDate } from "./getColorByDate";
 
 // update both pages and notes
 export function updateNoteDisplay(pages, currentPage){
-    renderPages(pages, currentPage);
-    renderNotes(pages, currentPage);
+    console.log(pages);
+    if (pages && pages.length !== 0){
+        renderPages(pages, currentPage);
+        renderNotes(pages, currentPage);
+    } else if (pages && pages.length === 0){
+        clearDisplay();
+    }
 }
 
 // render only pages
@@ -159,5 +164,18 @@ function renderNotes(pages, currentPage){
             pages[currentPage].notes.splice(i, 1);
             localStorage.setItem('notes', JSON.stringify(pages));
         });
+    }
+}
+
+// clear display outside of main loop
+function clearDisplay() {
+    let notesPages = document.getElementById('notesPages');
+    let notesContent = document.getElementById('notesContent');
+
+    while (notesPages.firstChild){
+        notesPages.removeChild(notesPages.firstChild);
+    }
+    while (notesContent.firstChild){
+        notesContent.removeChild(notesContent.firstChild);
     }
 }

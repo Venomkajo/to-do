@@ -40,16 +40,17 @@ document.getElementById('pageForm').addEventListener('submit', function(event){
 // when new note is submitted
 document.getElementById('notesForm').addEventListener('submit', function(event){
     event.preventDefault();
+    if (pages && pages.length !== 0){
 
-    // get updated date from dynamic event listeners
-    pages = JSON.parse(localStorage.getItem('notes'));
-    currentPage = JSON.parse(localStorage.getItem('currentPage'));
-
-    const newNote = getNoteForm();
-    pages[currentPage].notes.push(newNote);
-    localStorage.setItem('notes', JSON.stringify(pages));
-    updateNoteDisplay(pages, currentPage);
-
+        // get updated date from dynamic event listeners
+        pages = JSON.parse(localStorage.getItem('notes'));
+        currentPage = JSON.parse(localStorage.getItem('currentPage'));
+    
+        const newNote = getNoteForm();
+        pages[currentPage].notes.push(newNote);
+        localStorage.setItem('notes', JSON.stringify(pages));
+        updateNoteDisplay(pages, currentPage);
+    }
 })
 
 console.log("loading successful");
