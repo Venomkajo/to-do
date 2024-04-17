@@ -158,11 +158,15 @@ function renderNotes(pages, currentPage){
 
         // remove a note
         removeButton.addEventListener('click', function() {
-            notesNoteDiv.remove();
-            notesHiddenDiv.remove();
+            let confirmation =  confirm("Are you sure you want to delete this note?");
 
-            pages[currentPage].notes.splice(i, 1);
-            localStorage.setItem('notes', JSON.stringify(pages));
+            if (confirmation){
+                notesNoteDiv.remove();
+                notesHiddenDiv.remove();
+    
+                pages[currentPage].notes.splice(i, 1);
+                localStorage.setItem('notes', JSON.stringify(pages));
+            }
         });
     }
 }

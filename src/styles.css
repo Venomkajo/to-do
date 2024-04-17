@@ -95,6 +95,12 @@ body, .flexbox
     overflow: scroll;
 }
 
+.notes-page:hover
+{
+    background-color: lightgreen;
+    color: black;
+}
+
 .notes-page button
 {
     background-color: black;
