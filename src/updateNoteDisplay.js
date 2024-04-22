@@ -150,6 +150,8 @@ function renderNotes(pages, currentPage){
             page.notes[i].description = notesDescriptionDiv.innerText;
             page.notes[i].title = notesTitleDiv.innerText;
             page.notes[i].dueDate = dueDateInput.value;
+
+            localStorage.setItem('notes', JSON.stringify(pages));
         });
 
         let removeButton = document.createElement('button');
